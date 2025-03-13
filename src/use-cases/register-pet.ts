@@ -1,25 +1,6 @@
 import { PetDTO } from '@/dtos/pet'
+import { RegisterPetDTO } from '@/dtos/register-pet'
 import { PetsRepository } from '@/repositories/pets-repository'
-import {
-  Age,
-  DependenceLevel,
-  EnergyLevel,
-  Environment,
-  Pet,
-  Size,
-} from '@prisma/client'
-
-interface RegisterPetUseCaseRequest {
-  name: string
-  about?: string
-  age: Age
-  size: Size
-  energy_level: EnergyLevel
-  dependence_level: DependenceLevel
-  environment: Environment
-  requirements: string
-  organization_id: string
-}
 
 interface RegisterPetUseCaseResponse {
   pet: PetDTO
@@ -37,7 +18,7 @@ export class RegisterPetUseCase {
     requirements,
     size,
     organization_id,
-  }: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse> {
+  }: RegisterPetDTO): Promise<RegisterPetUseCaseResponse> {
     const pet = await this.petsRepository.create({
       name,
       about,

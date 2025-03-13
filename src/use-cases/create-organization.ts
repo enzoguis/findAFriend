@@ -1,7 +1,8 @@
-import { Organization } from '@prisma/client'
+import { OrganizationDTO } from '@/dtos/organization'
 import { OrganizationRepository } from '@/repositories/organization-repository'
 import { hash } from 'bcryptjs'
-import { OrganizationAlreadyExistsError } from './errors/organization-already-exists-error'
+import { OrganizationAlreadyExistsWithSameEmailError } from './errors/organization-already-exists-with-same-email-error'
+import { OrganizationAlreadyExistsWithSamePhoneError } from './errors/organization-already-exists-with-same-phone-error'
 
 interface CreateOrganizationUseCaseRequest {
   responsible_name: string
@@ -13,7 +14,7 @@ interface CreateOrganizationUseCaseRequest {
 }
 
 interface CreateOrganizationUseCaseResponse {
-  organization: Organization
+  organization: OrganizationDTO
 }
 
 export class CreateOrganizationUseCase {
@@ -32,7 +33,13 @@ export class CreateOrganizationUseCase {
     const organizationWithSameEmail =
       await this.organizationRepository.findByEmail(email)
 
-    if (organizationWithSameEmail) throw new OrganizationAlreadyExistsError()
+    const organizationWithSamePhoneNumber =
+      await this.organizationRepository.findByPhoneNumber(phone_number)
+
+    if (organizationWithSameEmail)
+      throw new OrganizationAlreadyExistsWithSameEmailError()
+    if (organizationWithSamePhoneNumber)
+      throw new OrganizationAlreadyExistsWithSamePhoneError()
 
     const organization = await this.organizationRepository.create({
       adress,

@@ -1,8 +1,8 @@
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
+import { compare } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { CreateOrganizationUseCase } from './create-organization'
-import { compare } from 'bcryptjs'
-import { OrganizationAlreadyExistsError } from './errors/organization-already-exists-error'
+import { OrganizationAlreadyExistsWithSameEmailError } from './errors/organization-already-exists-with-same-email-error'
 
 let organizationRepository: InMemoryOrganizationRepository
 let sut: CreateOrganizationUseCase
@@ -66,7 +66,7 @@ describe('Create Organization Use Case', () => {
         phone_number: '(11) 99999-9999',
         responsible_name: 'Teste Doe',
       })
-    ).rejects.toBeInstanceOf(OrganizationAlreadyExistsError)
+    ).rejects.toBeInstanceOf(OrganizationAlreadyExistsWithSameEmailError)
   })
 })
 

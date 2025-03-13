@@ -20,6 +20,7 @@ export class PrismaPetsRepository implements PetsRepository {
   async create(data: RegisterPetDTO) {
     const prismaData: Prisma.PetCreateInput = {
       name: data.name,
+      about: data.about,
       age: data.age,
       size: data.size,
       energy_level: data.energy_level,

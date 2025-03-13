@@ -1,9 +1,7 @@
-import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
-import { compare } from 'bcryptjs'
-import { beforeEach, describe, expect, it } from 'vitest'
-import { OrganizationAlreadyExistsError } from './errors/organization-already-exists-error'
-import { RegisterPetUseCase } from './register-pet'
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
+import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
+import { beforeEach, describe, expect, it } from 'vitest'
+import { RegisterPetUseCase } from './register-pet'
 
 let petsRepository: InMemoryPetsRepository
 let organizationRepository: InMemoryOrganizationRepository
