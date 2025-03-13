@@ -43,8 +43,6 @@ export class CreateOrganizationUseCase {
       responsible_name,
     })
 
-    return {
-      organization,
-    }
+    return { organization }
   }
 }
