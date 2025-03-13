@@ -20,20 +20,47 @@ model Organization {
   @@map("organizations")
 }
 
-enum age {
+enum Age {
   Puppy
   Adult
   Elderly
 }
 
+enum EnergyLevel {
+  Low
+  Medium
+  High
+}
+
+enum DependenceLevel {
+  Low
+  Medium
+  High
+}
+
+enum Environment {
+  Indoor
+  Outdoor
+}
+
+enum Size {
+  Small
+  Medium
+  Large
+}
+
 model Pet {
-  id              String       @unique @default(uuid())
-  name            String
-  about           String?
-  age             age
-  gender          String
-  organization    Organization @relation(fields: [organization_id], references: [id])
-  organization_id String
+  id               String          @unique @default(uuid())
+  name             String
+  about            String?
+  age              Age
+  size             Size
+  energy_level     EnergyLevel
+  dependence_level DependenceLevel
+  environment      Environment
+  requirements     String
+  organization     Organization    @relation(fields: [organization_id], references: [id])
+  organization_id  String
 
   @@map("pets")
 }
