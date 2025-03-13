@@ -7,19 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Organization {
-  id               String @unique @default(uuid())
-  responsible_name String
-  email            String @unique
-  cep              String
-  adress           String
-  phone_number     String @unique
-  password_hash    String
-  Pet              Pet[]
-
-  @@map("organizations")
-}
-
 enum Age {
   Puppy
   Adult
@@ -47,6 +34,19 @@ enum Size {
   Small
   Medium
   Large
+}
+
+model Organization {
+  id               String @unique @default(uuid())
+  responsible_name String
+  email            String @unique
+  cep              String
+  adress           String
+  phone_number     String @unique
+  password_hash    String
+  Pet              Pet[]
+
+  @@map("organizations")
 }
 
 model Pet {
