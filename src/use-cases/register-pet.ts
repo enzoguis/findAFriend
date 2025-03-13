@@ -1,3 +1,4 @@
+import { PetDTO } from '@/dtos/pet'
 import { PetsRepository } from '@/repositories/pets-repository'
 import {
   Age,
@@ -21,7 +22,7 @@ interface RegisterPetUseCaseRequest {
 }
 
 interface RegisterPetUseCaseResponse {
-  pet: Pet
+  pet: PetDTO
 }
 
 export class RegisterPetUseCase {
@@ -46,11 +47,7 @@ export class RegisterPetUseCase {
       dependence_level,
       environment,
       requirements,
-      organization: {
-        connect: {
-          id: organization_id,
-        },
-      },
+      organization_id: organization_id,
     })
 
     return { pet }
