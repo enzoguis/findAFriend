@@ -1,8 +1,24 @@
 import { Prisma, Organization } from '@prisma/client'
 import { OrganizationRepository } from '../organization-repository'
 import { randomUUID } from 'node:crypto'
+import { OrganizationDTO } from '@/dtos/organization'
 
 export class InMemoryOrganizationRepository implements OrganizationRepository {
+  async findById(id: string): Promise<OrganizationDTO | null> {
+    const organization = this.items.find((item) => item.id === id)
+    if (!organization) return null
+
+    return organization
+  }
+  async findByPhoneNumber(phoneNumber: string) {
+    const organization = this.items.find(
+      (item) => item.phone_number === phoneNumber
+    )
+
+    if (!organization) return null
+
+    return organization
+  }
   public items: Organization[] = []
   async create(data: Prisma.OrganizationCreateInput) {
     const organization = {

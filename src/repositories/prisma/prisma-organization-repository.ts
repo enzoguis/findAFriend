@@ -4,6 +4,13 @@ import { OrganizationRepository } from '@/repositories/organization-repository'
 import { OrganizationDTO } from '@/dtos/organization'
 
 export class PrismaOrganizationRepository implements OrganizationRepository {
+  async findById(id: string) {
+    const organization = await prisma.organization.findUnique({
+      where: { id },
+    })
+
+    return organization
+  }
   async findByPhoneNumber(phoneNumber: string) {
     const organizations = await prisma.organization.findUnique({
       where: { phone_number: phoneNumber },
