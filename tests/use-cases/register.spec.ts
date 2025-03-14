@@ -1,7 +1,7 @@
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
+import { RegisterPetUseCase } from '@/use-cases/register-pet'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { RegisterPetUseCase } from './register-pet'
 
 let petsRepository: InMemoryPetsRepository
 let organizationRepository: InMemoryOrganizationRepository
@@ -27,11 +27,11 @@ describe('Register Pets Use Case', () => {
     const { pet } = await sut.execute({
       name: 'dog name 2',
       about: 'about kk',
-      age: 'Puppy',
-      size: 'Small',
-      energy_level: 'High',
-      dependence_level: 'High',
-      environment: 'Indoor',
+      age: 'puppy',
+      size: 'small',
+      energy_level: 'high',
+      dependence_level: 'high',
+      environment: 'indoor',
       requirements: 'nothing',
       organization_id: organization.id,
     })

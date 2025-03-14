@@ -1,8 +1,8 @@
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
+import { CreateOrganizationUseCase } from '@/use-cases/create-organization'
+import { OrganizationAlreadyExistsWithSameEmailError } from '@/use-cases/errors/organization-already-exists-with-same-email-error'
 import { compare } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { CreateOrganizationUseCase } from './create-organization'
-import { OrganizationAlreadyExistsWithSameEmailError } from './errors/organization-already-exists-with-same-email-error'
 
 let organizationRepository: InMemoryOrganizationRepository
 let sut: CreateOrganizationUseCase
