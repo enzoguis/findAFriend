@@ -2,8 +2,16 @@ import { RegisterPetDTO } from '@/dtos/register-pet'
 import { prisma } from '@/lib/prisma'
 import { PetsRepository } from '../pets-repository'
 import { PetCharacteristicsDTO } from '@/dtos/pet-characteristics'
+import { PetDTO } from '@/dtos/pet'
 
 export class PrismaPetsRepository implements PetsRepository {
+  async findById(id: string) {
+    const pet = await prisma.pet.findUnique({
+      where: { id },
+    })
+
+    return pet
+  }
   async findBycharacteristics(params: PetCharacteristicsDTO) {
     const pets = await prisma.pet.findMany({
       where: {

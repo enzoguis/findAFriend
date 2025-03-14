@@ -11,8 +11,15 @@ interface data {}
 
 export class InMemoryPetsRepository implements PetsRepository {
   constructor(private organizationRepository: InMemoryOrganizationRepository) {}
-
   public items: PetDTO[] = []
+
+  async findById(id: string) {
+    const pet = this.items.find((item) => item.id === id)
+
+    if (!pet) return null
+
+    return pet
+  }
 
   async findBycharacteristics(params: PetCharacteristicsDTO) {
     const organization = this.organizationRepository.items.find(
