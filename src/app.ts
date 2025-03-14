@@ -3,8 +3,16 @@ import { organizationRoutes } from './http/controllers/organization/routes'
 import { ZodError } from 'zod'
 import { env } from './env'
 import { petsRoutes } from './http/controllers/pets/routes'
+import fastifyJwt from '@fastify/jwt'
+import fastifyCookie from '@fastify/cookie'
 
 export const app = fastify()
+
+app.register(fastifyCookie)
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+})
 
 app.register(organizationRoutes)
 app.register(petsRoutes)
