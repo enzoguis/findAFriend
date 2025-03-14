@@ -8,7 +8,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 
   const createOrganizationUseCase = makeCreateOrganizationUseCase()
 
-  const organization = createOrganizationUseCase.execute({
+  await createOrganizationUseCase.execute({
     adress,
     cep,
     email,
@@ -17,5 +17,5 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     responsible_name,
   })
 
-  reply.status(201).send({ organization })
+  reply.status(201).send()
 }
