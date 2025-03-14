@@ -1,6 +1,5 @@
 import { PetDTO } from '@/dtos/pet'
 import { PetsRepository } from '@/repositories/pets-repository'
-import { Pet } from '@prisma/client'
 
 interface FetchPetsByCepUseCaseRequest {
   cep: string

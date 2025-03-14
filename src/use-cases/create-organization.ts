@@ -36,11 +36,13 @@ export class CreateOrganizationUseCase {
     const organizationWithSamePhoneNumber =
       await this.organizationRepository.findByPhoneNumber(phone_number)
 
-    if (organizationWithSameEmail)
+    if (organizationWithSameEmail) {
       throw new OrganizationAlreadyExistsWithSameEmailError()
-    if (organizationWithSamePhoneNumber)
-      throw new OrganizationAlreadyExistsWithSamePhoneError()
+    }
 
+    if (organizationWithSamePhoneNumber) {
+      throw new OrganizationAlreadyExistsWithSamePhoneError()
+    }
     const organization = await this.organizationRepository.create({
       adress,
       cep,

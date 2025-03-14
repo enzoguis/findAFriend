@@ -1,9 +1,7 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
-import { createOrganizationSchema } from '@/models/create-organization-schema'
-import { makeCreateOrganizationUseCase } from '@/use-cases/factories/make-create-organization-use-case'
-import { makeRegisterPetUseCase } from '@/use-cases/factories/make-register-pet-use-case'
-import { registerPetSchema } from '@/models/register-pet-schema'
 import { registerPetParamsSchema } from '@/models/register-pet-params-schema'
+import { registerPetSchema } from '@/models/register-pet-schema'
+import { makeRegisterPetUseCase } from '@/use-cases/factories/make-register-pet-use-case'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const {
