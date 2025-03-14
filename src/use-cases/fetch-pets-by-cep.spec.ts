@@ -38,11 +38,11 @@ describe('Fetch Pets Use Case', () => {
     await petsRepository.create({
       name: 'dog name 2',
       about: 'about kk',
-      age: 'Puppy',
-      size: 'Small',
-      energy_level: 'High',
-      dependence_level: 'High',
-      environment: 'Indoor',
+      age: 'puppy',
+      size: 'small',
+      energy_level: 'high',
+      dependence_level: 'high',
+      environment: 'indoor',
       requirements: 'nothing',
       organization_id: organization.id,
     })
@@ -50,11 +50,11 @@ describe('Fetch Pets Use Case', () => {
     await petsRepository.create({
       name: 'dog name',
       about: 'about kk',
-      age: 'Puppy',
-      size: 'Small',
-      energy_level: 'High',
-      dependence_level: 'High',
-      environment: 'Indoor',
+      age: 'puppy',
+      size: 'small',
+      energy_level: 'high',
+      dependence_level: 'high',
+      environment: 'indoor',
       requirements: 'nothing',
       organization_id: organizationWithOtherCep.id,
     })

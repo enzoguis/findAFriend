@@ -2,11 +2,11 @@ export interface PetDTO {
   id?: string
   name: string
   about?: string | null
-  age: 'Puppy' | 'Adult' | 'Elderly'
-  size: 'Small' | 'Medium' | 'Large'
-  energy_level: 'Low' | 'Medium' | 'High'
-  dependence_level: 'Low' | 'Medium' | 'High'
-  environment: 'Indoor' | 'Outdoor'
+  age: 'puppy' | 'adult' | 'elderly'
+  size: 'small' | 'medium' | 'large'
+  energy_level: 'low' | 'medium' | 'high'
+  dependence_level: 'low' | 'medium' | 'high'
+  environment: 'indoor' | 'outdoor'
   requirements: string
   organization_id: string
 }

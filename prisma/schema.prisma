@@ -8,32 +8,32 @@ datasource db {
 }
 
 enum Age {
-  Puppy
-  Adult
-  Elderly
+  puppy
+  adult
+  elderly
 }
 
 enum EnergyLevel {
-  Low
-  Medium
-  High
+  low
+  medium
+  high
 }
 
 enum DependenceLevel {
-  Low
-  Medium
-  High
+  low
+  medium
+  high
 }
 
 enum Environment {
-  Indoor
-  Outdoor
+  indoor
+  outdoor
 }
 
 enum Size {
-  Small
-  Medium
-  Large
+  small
+  medium
+  large
 }
 
 model Organization {
