@@ -1,6 +1,7 @@
 import { PetDTO } from '@/dtos/pet'
+import { PetCharacteristicsDTO } from '@/dtos/pet-characteristics'
 import { RegisterPetDTO } from '@/dtos/register-pet'
 export interface PetsRepository {
   create(data: RegisterPetDTO): Promise<PetDTO>
-  findManyByCep(cep: string): Promise<PetDTO[]>
+  findBycharacteristics(params: PetCharacteristicsDTO): Promise<PetDTO[]>
 }

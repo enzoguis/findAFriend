@@ -1,15 +1,20 @@
-import { Prisma, Pet } from '@prisma/client'
-import { PetsRepository } from '../pets-repository'
-import { prisma } from '@/lib/prisma'
 import { RegisterPetDTO } from '@/dtos/register-pet'
+import { prisma } from '@/lib/prisma'
+import { PetsRepository } from '../pets-repository'
+import { PetCharacteristicsDTO } from '@/dtos/pet-characteristics'
 
 export class PrismaPetsRepository implements PetsRepository {
-  async findManyByCep(cep: string) {
+  async findBycharacteristics(params: PetCharacteristicsDTO) {
     const pets = await prisma.pet.findMany({
       where: {
+        age: params.age,
+        size: params.size,
+        energy_level: params.energy_level,
+        dependence_level: params.dependence_level,
+        environment: params.environment,
         organization: {
           cep: {
-            equals: cep,
+            equals: params.cep,
           },
         },
       },
@@ -18,21 +23,7 @@ export class PrismaPetsRepository implements PetsRepository {
     return pets
   }
   async create(data: RegisterPetDTO) {
-    const prismaData: Prisma.PetCreateInput = {
-      name: data.name,
-      about: data.about,
-      age: data.age,
-      size: data.size,
-      energy_level: data.energy_level,
-      dependence_level: data.dependence_level,
-      environment: data.environment,
-      requirements: data.requirements,
-      organization: {
-        connect: { id: data.organization_id },
-      },
-    }
-
-    const pet = await prisma.pet.create({ data: prismaData })
+    const pet = await prisma.pet.create({ data })
 
     return pet
   }
