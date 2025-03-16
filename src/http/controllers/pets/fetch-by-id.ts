@@ -7,9 +7,9 @@ export async function fetchById(request: FastifyRequest, reply: FastifyReply) {
 
   const fetchByIdUseCase = makeFetchPetsByIdUseCase()
 
-  const pets = await fetchByIdUseCase.execute({
+  const pet = await fetchByIdUseCase.execute({
     id,
   })
 
-  reply.status(201).send({ pets })
+  reply.status(200).send(pet)
 }

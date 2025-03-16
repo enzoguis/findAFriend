@@ -20,5 +20,5 @@ export async function fetchByFilter(
     size,
   })
 
-  reply.status(201).send({ pets })
+  reply.status(200).send(pets)
 }

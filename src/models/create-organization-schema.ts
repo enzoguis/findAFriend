@@ -7,6 +7,9 @@ export const createOrganizationSchema = z.object({
   adress: z.string(),
   phone_number: z
     .string()
-    .min(6, { message: 'The phone number must be at least 6 digits' }),
+    .min(6)
+    .regex(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/, {
+      message: 'Invalid phone number format',
+    }),
   password: z.string().min(6),
 })

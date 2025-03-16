@@ -19,7 +19,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 
   const registerPetUseCase = makeRegisterPetUseCase()
 
-  await registerPetUseCase.execute({
+  const pet = await registerPetUseCase.execute({
     about,
     age,
     dependence_level,
@@ -31,5 +31,5 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     organization_id: organizationId,
   })
 
-  reply.status(201).send()
+  reply.status(201).send(pet)
 }
