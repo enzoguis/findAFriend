@@ -10,9 +10,9 @@ export async function getPetByIdController(
 
   const fetchByIdUseCase = makeGetPetsByIdUseCase()
 
-  const pet = await fetchByIdUseCase.execute({
+  const response = await fetchByIdUseCase.execute({
     id,
   })
 
-  reply.status(200).send(pet)
+  reply.status(200).send(response.pet)
 }

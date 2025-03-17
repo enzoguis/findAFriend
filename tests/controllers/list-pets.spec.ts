@@ -31,7 +31,7 @@ describe('Fetch Pets By Filter (e2e)', () => {
     })
 
     const token = authResponse.body.token
-    const organizationId = organizationResponse.body.organization?.id
+    const organizationId = organizationResponse.body.id
 
     await request(app.server)
       .post(`/organizations/${organizationId}/pets`)
@@ -54,7 +54,7 @@ describe('Fetch Pets By Filter (e2e)', () => {
     })
 
     expect(response.statusCode).toEqual(200)
-    expect(response.body.pets).toEqual(
+    expect(response.body).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           name: 'dog name',

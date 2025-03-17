@@ -26,7 +26,7 @@ describe('Fetch By Id (e2e)', () => {
     })
 
     const token = await authResponse.body.token
-    const organizationId = organization.body.organization.id
+    const organizationId = organization.body.id
 
     const pet = await request(app.server)
       .post(`/organizations/${organizationId}/pets`)
@@ -42,13 +42,11 @@ describe('Fetch By Id (e2e)', () => {
         requirements: 'nothing',
       })
 
-    const petId = pet.body.pet.id
+    const petId = pet.body.id
 
     const response = await request(app.server).get(`/pets/${petId}`)
 
     expect(response.statusCode).toEqual(200)
-    expect(response.body.pet).toEqual(
-      expect.objectContaining({ name: 'dog name' })
-    )
+    expect(response.body).toEqual(expect.objectContaining({ name: 'dog name' }))
   })
 })

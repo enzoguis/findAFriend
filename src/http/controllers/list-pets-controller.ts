@@ -11,7 +11,7 @@ export async function listPetsController(
 
   const fetchByFilterUseCase = makeListPetsUseCase()
 
-  const pets = await fetchByFilterUseCase.execute({
+  const response = await fetchByFilterUseCase.execute({
     cep,
     age,
     dependence_level,
@@ -20,5 +20,5 @@ export async function listPetsController(
     size,
   })
 
-  reply.status(200).send(pets)
+  reply.status(200).send(response.pets)
 }

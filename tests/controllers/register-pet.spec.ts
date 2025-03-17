@@ -26,7 +26,7 @@ describe('Register (e2e)', () => {
     })
 
     const token = await authResponse.body.token
-    const organizationId = organization.body.organization.id
+    const organizationId = organization.body.id
 
     const response = await request(app.server)
       .post(`/organizations/${organizationId}/pets`)
