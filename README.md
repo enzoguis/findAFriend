@@ -18,8 +18,10 @@
 
 ### Implementar
 
-[] Testes e2e
-[] Workflow
+[x] Testes e2e
+[x] Workflow
+[x] Teste unitário para checar validação de número
+[] Refatorar nome dos arquivos do controller
 
 ### Futuras Melhorias 
 
