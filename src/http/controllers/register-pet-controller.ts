@@ -22,7 +22,7 @@ export async function registerPetController(
 
   const registerPetUseCase = makeRegisterPetUseCase()
 
-  const pet = await registerPetUseCase.execute({
+  const response = await registerPetUseCase.execute({
     about,
     age,
     dependence_level,
@@ -34,5 +34,5 @@ export async function registerPetController(
     organization_id: organizationId,
   })
 
-  reply.status(201).send(pet)
+  reply.status(201).send(response.pet)
 }

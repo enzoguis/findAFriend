@@ -11,7 +11,7 @@ export async function createOrganizationController(
 
   const createOrganizationUseCase = makeCreateOrganizationUseCase()
 
-  const organization = await createOrganizationUseCase.execute({
+  const response = await createOrganizationUseCase.execute({
     adress,
     cep,
     email,
@@ -20,5 +20,5 @@ export async function createOrganizationController(
     responsible_name,
   })
 
-  reply.status(201).send(organization)
+  reply.status(201).send(response.organization)
 }
