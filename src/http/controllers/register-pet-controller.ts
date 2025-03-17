@@ -3,7 +3,10 @@ import { registerPetSchema } from '@/models/register-pet-schema'
 import { makeRegisterPetUseCase } from '@/use-cases/factories/make-register-pet-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-export async function register(request: FastifyRequest, reply: FastifyReply) {
+export async function registerPetController(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
   const {
     about,
     age,

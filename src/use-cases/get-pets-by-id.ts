@@ -2,19 +2,19 @@ import { PetDTO } from '@/dtos/pet'
 import { PetsRepository } from '@/repositories/pets-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
-interface FetchPetsByIdUseCaseRequest {
+interface GetPetsByIdUseCaseRequest {
   id: string
 }
 
-interface FetchPetsByIdUseCaseResponse {
+interface GetPetsByIdUseCaseResponse {
   pet: PetDTO
 }
 
-export class FetchPetsByIdUseCase {
+export class GetPetsByIdUseCase {
   constructor(private petsRepository: PetsRepository) {}
   async execute({
     id,
-  }: FetchPetsByIdUseCaseRequest): Promise<FetchPetsByIdUseCaseResponse> {
+  }: GetPetsByIdUseCaseRequest): Promise<GetPetsByIdUseCaseResponse> {
     const pet = await this.petsRepository.findById(id)
 
     if (!pet) throw new ResourceNotFoundError()
