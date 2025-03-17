@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const fetchPetsByFilterParamsSchema = z.object({
+export const listPetsParamsSchema = z.object({
   cep: z.string(),
   size: z.enum(['small', 'medium', 'large']).optional(),
   energy_level: z.enum(['low', 'medium', 'high']).optional(),

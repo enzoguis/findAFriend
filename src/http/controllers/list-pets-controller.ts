@@ -1,15 +1,15 @@
-import { fetchPetsByFilterParamsSchema } from '@/models/fetch-pets-by-filter-schema'
-import { makeFetchPetsByFilterUseCase } from '@/use-cases/factories/make-fetch-pets-by-filter-use-case'
+import { listPetsParamsSchema } from '@/models/list-pets-schema'
+import { makeListPetsUseCase } from '@/use-cases/factories/make-list-pets-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-export async function fetchByFilter(
+export async function listPetsController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
   const { cep, age, dependence_level, energy_level, environment, size } =
-    fetchPetsByFilterParamsSchema.parse(request.query)
+    listPetsParamsSchema.parse(request.query)
 
-  const fetchByFilterUseCase = makeFetchPetsByFilterUseCase()
+  const fetchByFilterUseCase = makeListPetsUseCase()
 
   const pets = await fetchByFilterUseCase.execute({
     cep,

@@ -1,17 +1,17 @@
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
-import { FetchPetsByFilterUseCase } from '@/use-cases/fetch-pets-by-filter'
+import { ListPetsUseCase } from '@/use-cases/list-pets'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 let petsRepository: InMemoryPetsRepository
 let organizationRepository: InMemoryOrganizationRepository
-let sut: FetchPetsByFilterUseCase
+let sut: ListPetsUseCase
 
 describe('Fetch Pets By Filter Use Case', () => {
   beforeEach(() => {
     organizationRepository = new InMemoryOrganizationRepository()
     petsRepository = new InMemoryPetsRepository(organizationRepository)
-    sut = new FetchPetsByFilterUseCase(petsRepository)
+    sut = new ListPetsUseCase(petsRepository)
   })
 
   it('should be able to fetch pets by filter', async () => {

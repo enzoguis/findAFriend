@@ -1,18 +1,18 @@
 import { InMemoryOrganizationRepository } from '@/repositories/in-memory/in-memory-organization-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
-import { FetchPetsByIdUseCase } from '@/use-cases/fetch-pets-by-id'
+import { GetPetsByIdUseCase } from '@/use-cases/get-pets-by-id'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 let petsRepository: InMemoryPetsRepository
 let organizationRepository: InMemoryOrganizationRepository
-let sut: FetchPetsByIdUseCase
+let sut: GetPetsByIdUseCase
 
 describe('Fetch Pet By ID Use Case', () => {
   beforeEach(() => {
     organizationRepository = new InMemoryOrganizationRepository()
     petsRepository = new InMemoryPetsRepository(organizationRepository)
-    sut = new FetchPetsByIdUseCase(petsRepository)
+    sut = new GetPetsByIdUseCase(petsRepository)
   })
 
   it('should be able to fetch a pet by ID', async () => {

@@ -3,7 +3,7 @@ import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-
 import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-export async function authenticate(
+export async function authenticateOrganizationController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {

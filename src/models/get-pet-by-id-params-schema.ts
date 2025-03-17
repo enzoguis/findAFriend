@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-export const fetchPetByIdParamsSchema = z.object({
+export const getPetByIdParamsSchema = z.object({
   id: z.string().uuid(),
 })
