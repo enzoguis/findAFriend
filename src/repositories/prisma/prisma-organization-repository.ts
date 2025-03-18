@@ -1,7 +1,6 @@
-import { Prisma, Organization } from '@prisma/client'
+import { CreateOrganizationDTO } from '@/dtos/create-organization'
 import { prisma } from '@/lib/prisma'
 import { OrganizationRepository } from '@/repositories/organization-repository'
-import { OrganizationDTO } from '@/dtos/organization'
 
 export class PrismaOrganizationRepository implements OrganizationRepository {
   async findById(id: string) {
@@ -25,7 +24,7 @@ export class PrismaOrganizationRepository implements OrganizationRepository {
 
     return organization
   }
-  async create(data: OrganizationDTO) {
+  async create(data: CreateOrganizationDTO) {
     const organization = await prisma.organization.create({ data })
 
     return organization
