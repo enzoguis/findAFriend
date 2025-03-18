@@ -2,9 +2,10 @@ import { Prisma, Organization } from '@prisma/client'
 import { OrganizationRepository } from '../organization-repository'
 import { randomUUID } from 'node:crypto'
 import { OrganizationDTO } from '@/dtos/organization'
+import { CreateOrganizationDTO } from '@/dtos/create-organization'
 
 export class InMemoryOrganizationRepository implements OrganizationRepository {
-  async findById(id: string): Promise<OrganizationDTO | null> {
+  async findById(id: string) {
     const organization = this.items.find((item) => item.id === id)
     if (!organization) return null
 
@@ -20,7 +21,7 @@ export class InMemoryOrganizationRepository implements OrganizationRepository {
     return organization
   }
   public items: Organization[] = []
-  async create(data: Prisma.OrganizationCreateInput) {
+  async create(data: CreateOrganizationDTO) {
     const organization = {
       id: randomUUID(),
       responsible_name: data.responsible_name,

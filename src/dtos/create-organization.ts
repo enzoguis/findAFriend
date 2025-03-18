@@ -1,5 +1,4 @@
-export interface OrganizationDTO {
-  id: string
+export interface CreateOrganizationDTO {
   responsible_name: string
   email: string
   phone_number: string
