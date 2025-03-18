@@ -1,5 +1,5 @@
 export interface PetDTO {
-  id?: string
+  id: string
   name: string
   about?: string | null
   age: 'puppy' | 'adult' | 'elderly'
